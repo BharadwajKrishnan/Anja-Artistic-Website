@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "evening-table",
+    "source": "3.jpg",
+    "width": 1236,
+    "height": 1600,
+    "thumbWidth": 618,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#ef8f2c"
+  },
+  {
+    "slug": "pear-and-red-bowl",
+    "source": "2.jpg",
+    "width": 1230,
+    "height": 1600,
+    "thumbWidth": 615,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#9e2b2b"
+  },
+  {
+    "slug": "study-in-grey",
+    "source": "6.jpg",
+    "width": 1187,
+    "height": 1600,
+    "thumbWidth": 594,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#8f7f6a"
+  },
+  {
+    "slug": "blue-sphere",
+    "source": "9.jpg",
+    "width": 1600,
+    "height": 1196,
+    "thumbWidth": 800,
+    "thumbHeight": 598,
+    "orientation": "landscape",
+    "accent": "#3f4d7a"
+  },
+  {
+    "slug": "clouds-over-the-valley",
+    "source": "4.jpg",
+    "width": 1178,
+    "height": 1600,
+    "thumbWidth": 589,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#3b5db0"
+  },
+  {
+    "slug": "skyline-at-dusk",
+    "source": "8.jpg",
+    "width": 1066,
+    "height": 1600,
+    "thumbWidth": 533,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#f28a3d"
+  },
+  {
+    "slug": "blue-hills",
+    "source": "12.jpg",
+    "width": 1600,
+    "height": 1086,
+    "thumbWidth": 800,
+    "thumbHeight": 543,
+    "orientation": "landscape",
+    "accent": "#6b6fb5"
+  },
+  {
+    "slug": "current",
+    "source": "5.jpg",
+    "width": 1600,
+    "height": 1294,
+    "thumbWidth": 800,
+    "thumbHeight": 647,
+    "orientation": "landscape",
+    "accent": "#3f7f8f"
+  },
+  {
+    "slug": "quilt-star",
+    "source": "10.jpg",
+    "width": 1600,
+    "height": 1454,
+    "thumbWidth": 800,
+    "thumbHeight": 727,
+    "orientation": "landscape",
+    "accent": "#e3162a"
+  },
+  {
+    "slug": "arches",
+    "source": "11.jpg",
+    "width": 1200,
+    "height": 1600,
+    "thumbWidth": 600,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#f98104"
+  },
+  {
+    "slug": "blue-lily",
+    "source": "7.jpg",
+    "width": 1165,
+    "height": 1600,
+    "thumbWidth": 583,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#4db3c6"
+  },
+  {
+    "slug": "two-tulips",
+    "source": "13.jpg",
+    "width": 1191,
+    "height": 1600,
+    "thumbWidth": 596,
+    "thumbHeight": 800,
+    "orientation": "portrait",
+    "accent": "#d8536a"
+  }
+]
