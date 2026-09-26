@@ -39,9 +39,21 @@ Then open http://localhost:8080. Opening `index.html` directly from Finder also 
 5. In `paintings.html`, copy one `<article class="work …">` block, paste it where you want the work to appear, and replace the slug, title, category, description, alt text, dimensions, and `--accent`. For a landscape-format painting add the `work--landscape` class.
 6. To feature it on the home page, copy one of the cards in the "Selected works" section of `index.html`.
 
-## Set a price
+## Set the prices
 
-Each card shows "Price on request" in two places: the `data-price` attribute on the `<article>` (used by the lightbox) and the `<span class="work-price">` inside it. Change both to the price, for example `$450`.
+Prices live in `prices.json`, one line per artwork:
+
+```json
+"evening-table": "$450",
+```
+
+Put the price text you want shown (any currency or wording), then run:
+
+```bash
+python3 tools/set_prices.py
+```
+
+That writes the price into the gallery card, the lightbox, and the featured cards on the home page. A `null` value shows "Price coming soon" until a price is set.
 
 ## Categories
 
