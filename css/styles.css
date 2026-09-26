@@ -422,3 +422,169 @@
     html.js .reveal.is-visible { opacity: 1; transform: none; }
   }
 }
+
+/* =============================================================
+   Expressive layer: washes, grain, brushstroke, ribbon, tilt,
+   cursor, marks, palette. All motion sits behind reduced-motion.
+   ============================================================= */
+@layer base {
+  body { overflow-x: clip; position: relative; }
+  /* Paper grain over everything (the lightbox lives in the top layer above it) */
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none;
+    opacity: .32; mix-blend-mode: multiply; background-size: 220px 220px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  /* Drifting watercolor washes behind the page */
+  .washes { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .wash {
+    position: absolute; width: 52vmax; height: 52vmax; border-radius: 50%;
+    filter: blur(64px); opacity: .27; will-change: transform;
+    background: radial-gradient(circle at 45% 45%, var(--c), transparent 66%);
+  }
+  .wash--1 { --c: #c9b8e8; top: -20vmax; left: -14vmax; }
+  .wash--2 { --c: #7fd0e2; top: 4vmax; right: -18vmax; }
+  .wash--3 { --c: #f7b86e; bottom: -22vmax; left: 6vmax; }
+  .wash--4 { --c: #f4a3b6; bottom: -16vmax; right: 2vmax; }
+  .wash--5 { --c: #cde68a; top: 38vmax; left: 34vmax; width: 34vmax; height: 34vmax; opacity: .26; }
+  @media (prefers-reduced-motion: no-preference) {
+    .wash { animation: drift 40s ease-in-out infinite alternate; }
+    .wash--2 { animation-duration: 52s; animation-delay: -14s; }
+    .wash--3 { animation-duration: 46s; animation-delay: -6s; }
+    .wash--4 { animation-duration: 58s; animation-delay: -22s; }
+    .wash--5 { animation-duration: 36s; animation-delay: -9s; }
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(7vmax, -5vmax) scale(1.18); }
+      to { transform: translate(-5vmax, 7vmax) scale(.94); }
+    }
+  }
+
+  /* Hero: words rise in one by one, then a brushstroke draws itself under her last words */
+  .w { display: inline-block; }
+  @media (prefers-reduced-motion: no-preference) {
+    html.js h1 .w { opacity: 0; transform: translateY(.45em) rotate(1.5deg); animation: word-rise 700ms var(--ease) forwards; animation-delay: calc(var(--i, 0) * 55ms); }
+    @keyframes word-rise { to { opacity: 1; transform: none; } }
+  }
+  .stroke { position: relative; display: inline-block; isolation: isolate; white-space: nowrap; }
+  .stroke-svg { position: absolute; z-index: -1; left: -3%; bottom: -.06em; width: 106%; max-width: none; height: .38em; overflow: visible; }
+  .stroke-svg path {
+    fill: none; stroke: #ef8f2c; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round;
+    vector-effect: non-scaling-stroke; opacity: .8;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .stroke-svg path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1s var(--ease) 900ms forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+  }
+
+  /* Hero shelf: the paintings shift with the cursor at three depths */
+  .shelf-item img {
+    transform: translate(calc(var(--px, 0) * var(--depth, 8) * 1px), calc(var(--py, 0) * var(--depth, 8) * 1px));
+    transition: transform 600ms cubic-bezier(.2, .8, .2, 1);
+  }
+
+  /* Slanted ribbon of her subjects */
+  .ribbon-wrap { overflow: clip; padding-block: var(--space-6) var(--space-6); }
+  .ribbon-wrap + .section { margin-top: var(--space-4); }
+  .ribbon {
+    width: 110vw; margin-left: calc(50% - 55vw); transform: rotate(-2deg);
+    background: var(--ink); color: var(--paper); overflow: hidden; padding-block: .55em;
+    box-shadow: 8px 12px 0 -2px rgba(201, 184, 232, .55);
+  }
+  .ribbon-track { display: flex; width: max-content; gap: 0; }
+  .ribbon-track span {
+    display: inline-flex; align-items: center; gap: 1.2rem; padding-right: 1.2rem;
+    font-family: var(--font-display); font-weight: 700; font-stretch: 122%; letter-spacing: -.01em;
+    font-size: clamp(1.4rem, 3.4vw, 2.6rem); line-height: 1; white-space: nowrap;
+  }
+  .ribbon-track i { width: .5em; height: .5em; border-radius: 50%; background: var(--dot); flex: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ribbon-track { animation: ticker 34s linear infinite; }
+    .ribbon:hover .ribbon-track { animation-play-state: paused; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+  }
+
+  /* Gallery cards: perspective tilt that follows the cursor; staggered reveal */
+  .work-frame { perspective: 900px; }
+  .work-frame img {
+    transform: translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 220ms var(--ease), box-shadow 260ms var(--ease);
+  }
+  .work-link:hover .work-frame, .work-link:focus-visible .work-frame { --lift: -8px; }
+  .work-link:hover img, .work-link:focus-visible img {
+    transform: translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  }
+  .work-swatch { display: inline-block; width: .7em; height: .7em; border-radius: 50%; background: var(--accent); margin-right: .45em; vertical-align: -.02em; }
+
+  /* Filter chips carry their subject's colour */
+  .chip[data-filter]:not([data-filter="all"])::before { content: ""; display: inline-block; width: .55em; height: .55em; border-radius: 50%; margin-right: .5em; background: var(--dot, var(--ink-soft)); vertical-align: .02em; }
+  .chip[data-filter="still-life"] { --dot: #ef8f2c; }
+  .chip[data-filter="landscape"] { --dot: #3b5db0; }
+  .chip[data-filter="abstract"] { --dot: #e3162a; }
+  .chip[data-filter="flowers"] { --dot: #d8536a; }
+
+  /* Lightbox: the colour blooms out from the centre */
+  @media (prefers-reduced-motion: no-preference) {
+    .lightbox[open] .lightbox-tint { animation: bloom 700ms var(--ease) both; }
+    @keyframes bloom { from { clip-path: circle(0% at 50% 50%); } to { clip-path: circle(120% at 50% 50%); } }
+  }
+
+  /* Marker highlight inside headings */
+  .mark {
+    padding: 0 .14em; margin: 0 -.14em; border-radius: .18em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    background: linear-gradient(100deg, transparent 1%, var(--mark) 3%, var(--mark) 97%, transparent 99%);
+    --mark: rgba(201, 184, 232, .55);
+  }
+  @supports (color: color-mix(in oklab, red 50%, transparent)) {
+    .mark { --mark: color-mix(in oklab, var(--accent) 34%, transparent); }
+  }
+
+  /* Standalone figures float gently */
+  @media (prefers-reduced-motion: no-preference) {
+    .art-figure img { animation: float 7s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-9px); } }
+  }
+
+  /* Palette strip: one swatch per painting */
+  .palette-section { margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+  .palette-section .eyebrow { margin-bottom: var(--space-2); }
+  .palette { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
+  .palette a {
+    display: block; width: 52px; height: 52px; background: var(--accent);
+    border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
+    box-shadow: 6px 9px 18px -6px var(--shadow-tint);
+    transition: transform var(--dur-fast) var(--ease), border-radius var(--dur) var(--ease);
+  }
+  .palette a { --shadow-tint: rgba(34, 30, 58, .25); }
+  @supports (color: color-mix(in oklab, red 50%, transparent)) { .palette a { --shadow-tint: color-mix(in oklab, var(--accent) 55%, transparent); } }
+  .palette a:hover, .palette a:focus-visible { transform: translateY(-6px) rotate(-6deg); border-radius: 50%; }
+
+  /* Footer: a bar of all twelve accents */
+  .site-footer { border-top: 0; position: relative; }
+  .site-footer::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px;
+    background: linear-gradient(90deg, #ef8f2c, #9e2b2b, #8f7f6a, #3f4d7a, #3b5db0, #f28a3d, #6b6fb5, #3f7f8f, #e3162a, #f98104, #4db3c6, #d8536a);
+  }
+
+  /* Cursor ring that takes each painting's colour (pointer devices only) */
+  .cursor { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .cursor {
+      display: block; position: fixed; top: 0; left: 0; z-index: 60; pointer-events: none;
+      width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink);
+      transform: translate(-50%, -50%); opacity: 0; mix-blend-mode: multiply;
+      transition: width 260ms var(--ease), height 260ms var(--ease), background-color 260ms, border-color 260ms, opacity 300ms;
+    }
+    .cursor.is-on { opacity: .9; }
+    .cursor.is-art { width: 48px; height: 48px; background: var(--accent); border-color: transparent; opacity: .6; }
+  }
+}
+
+@layer utilities {
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .reveal { transition-delay: calc(var(--i, 0) * 70ms); }
+  }
+}

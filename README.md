@@ -61,6 +61,10 @@ The whole folder can be uploaded as-is.
 
 After the site has a domain, change `og:image` in each page's `<head>` to the full address (for example `https://example.com/images/og.jpg`) so shared links show the preview image.
 
+## Motion and decoration
+
+The washes drifting behind each page, the paper grain, the brushstroke and word-by-word entrance in the home headline, the scrolling ribbon, the tilt on gallery cards, the cursor ring, and the colour bloom when a work opens are all defined in `css/styles.css` (the "Expressive layer" section) and the last block of `js/main.js`. Every animation is skipped automatically for visitors who have "reduce motion" switched on, and the cursor effects only run on devices with a mouse or trackpad.
+
 ## Fonts
 
 Archivo and Newsreader load from Google Fonts. Without internet access the site falls back to Arial and Georgia.

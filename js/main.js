@@ -223,3 +223,108 @@
   var initial = initialId ? document.getElementById(initialId) : null;
   if (initial && works.indexOf(initial) !== -1) { open(initial, false); }
 })();
+
+/* ---------- Expressive layer (all optional, all gated) ---------- */
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* Headings: wrap each word so it can rise in on its own */
+  function wrapWords(node, counter) {
+    Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+      if (child.nodeType === 3) {
+        var parts = child.textContent.split(/(\s+)/);
+        var frag = document.createDocumentFragment();
+        parts.forEach(function (part) {
+          if (!part) { return; }
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var span = document.createElement('span');
+          span.className = 'w';
+          span.style.setProperty('--i', counter.n++);
+          span.textContent = part;
+          frag.appendChild(span);
+        });
+        node.replaceChild(frag, child);
+      } else if (child.nodeType === 1 && child.tagName !== 'SVG' && child.tagName !== 'svg') {
+        wrapWords(child, counter);
+      }
+    });
+  }
+  if (!reduceMotion) {
+    Array.prototype.forEach.call(document.querySelectorAll('h1'), function (h) { wrapWords(h, { n: 0 }); });
+  }
+
+  /* Staggered reveal inside grids */
+  Array.prototype.forEach.call(document.querySelectorAll('.works'), function (grid) {
+    Array.prototype.forEach.call(grid.querySelectorAll('.reveal'), function (el, i) {
+      el.style.setProperty('--i', i % 6);
+    });
+  });
+
+  /* Hero shelf parallax */
+  var hero = document.querySelector('.hero');
+  var shelf = document.querySelector('.shelf');
+  if (hero && shelf && finePointer && !reduceMotion) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var px = ((e.clientX - r.left) / r.width - .5) * 2;
+      var py = ((e.clientY - r.top) / r.height - .5) * 2;
+      shelf.style.setProperty('--px', px.toFixed(3));
+      shelf.style.setProperty('--py', py.toFixed(3));
+    });
+    hero.addEventListener('pointerleave', function () {
+      shelf.style.setProperty('--px', 0);
+      shelf.style.setProperty('--py', 0);
+    });
+  }
+
+  /* Gallery cards tilt toward the cursor */
+  if (finePointer && !reduceMotion) {
+    Array.prototype.forEach.call(document.querySelectorAll('.work-link'), function (link) {
+      var frame = link.querySelector('.work-frame');
+      if (!frame) { return; }
+      link.addEventListener('pointermove', function (e) {
+        var r = frame.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5;
+        var y = (e.clientY - r.top) / r.height - .5;
+        frame.style.setProperty('--ry', (x * 12).toFixed(2) + 'deg');
+        frame.style.setProperty('--rx', (-y * 12).toFixed(2) + 'deg');
+      });
+      link.addEventListener('pointerleave', function () {
+        frame.style.removeProperty('--rx');
+        frame.style.removeProperty('--ry');
+      });
+    });
+  }
+
+  /* Cursor ring */
+  if (finePointer) {
+    var ring = document.createElement('div');
+    ring.className = 'cursor';
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+    var tx = -100, ty = -100, cx = -100, cy = -100, raf = null;
+    var tick = function () {
+      cx += (tx - cx) * .22;
+      cy += (ty - cy) * .22;
+      ring.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) translate(-50%,-50%)';
+      raf = (Math.abs(tx - cx) > .2 || Math.abs(ty - cy) > .2) ? requestAnimationFrame(tick) : null;
+    };
+    document.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      ring.classList.add('is-on');
+      if (!raf) { raf = requestAnimationFrame(tick); }
+    });
+    document.addEventListener('pointerleave', function () { ring.classList.remove('is-on'); });
+    document.addEventListener('pointerover', function (e) {
+      var art = e.target.closest('.work, .shelf-item, .art-figure, .palette a');
+      if (art) {
+        ring.classList.add('is-art');
+        ring.style.setProperty('--accent', art.style.getPropertyValue('--accent') || 'var(--ink-soft)');
+      } else {
+        ring.classList.remove('is-art');
+      }
+    });
+  }
+})();

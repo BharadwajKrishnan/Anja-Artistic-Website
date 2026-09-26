@@ -21,6 +21,14 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div class="washes" aria-hidden="true">
+    <span class="wash wash--1"></span>
+    <span class="wash wash--2"></span>
+    <span class="wash wash--3"></span>
+    <span class="wash wash--4"></span>
+    <span class="wash wash--5"></span>
+  </div>
+
   <header class="site-header">
     <div class="wrap">
       <a class="wordmark" href="index.html">Anja</a>
@@ -45,7 +53,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-text">
           <p class="eyebrow">Anja · Paintings and drawings</p>
-          <h1 id="hero-title">“Art is a way of communication without words.”</h1>
+          <h1 id="hero-title">“Art is a way of communication <span class="stroke">without words.”<svg class="stroke-svg" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M4 15 C 50 4, 110 22, 170 11 S 262 5, 296 15"/></svg></span></h1>
           <p class="hero-attrib">— Anja</p>
           <p class="hero-sub lede">Still lifes, landscapes, abstracts, and flowers from an artist in Michigan. Every piece is available to inquire about.</p>
           <div class="hero-actions">
@@ -67,11 +75,20 @@
         </div>
       </section>
 
+      <div class="ribbon-wrap" aria-hidden="true">
+        <div class="ribbon">
+          <div class="ribbon-track">
+            <span>Still lifes <i style="--dot:#ef8f2c"></i></span><span>Landscapes <i style="--dot:#3b5db0"></i></span><span>Abstracts <i style="--dot:#e3162a"></i></span><span>Flowers <i style="--dot:#d8536a"></i></span><span>Painted in Michigan <i style="--dot:#4db3c6"></i></span><span>Prices on request <i style="--dot:#f98104"></i></span>
+            <span>Still lifes <i style="--dot:#ef8f2c"></i></span><span>Landscapes <i style="--dot:#3b5db0"></i></span><span>Abstracts <i style="--dot:#e3162a"></i></span><span>Flowers <i style="--dot:#d8536a"></i></span><span>Painted in Michigan <i style="--dot:#4db3c6"></i></span><span>Prices on request <i style="--dot:#f98104"></i></span>
+          </div>
+        </div>
+      </div>
+
       <section class="section" aria-labelledby="selected-title">
         <div class="section-head">
           <div>
             <p class="eyebrow">Selected works</p>
-            <h2 id="selected-title">Four to start with</h2>
+            <h2 id="selected-title">Four to <span class="mark" style="--accent:#ef8f2c">start with</span></h2>
           </div>
           <a class="btn btn--ghost btn--small" href="paintings.html">All 12 works</a>
         </div>
@@ -84,7 +101,7 @@
               </div>
               <h3 class="work-title">Clouds over the Valley</h3>
             </a>
-            <p class="work-meta"><span>Landscape</span><span class="work-price">Price on request</span></p>
+            <p class="work-meta"><span><i class="work-swatch" aria-hidden="true"></i>Landscape</span><span class="work-price">Price on request</span></p>
           </article>
 
           <article class="work reveal" style="--accent:#9e2b2b">
@@ -94,7 +111,7 @@
               </div>
               <h3 class="work-title">Pear and Red Bowl</h3>
             </a>
-            <p class="work-meta"><span>Still Life</span><span class="work-price">Price on request</span></p>
+            <p class="work-meta"><span><i class="work-swatch" aria-hidden="true"></i>Still Life</span><span class="work-price">Price on request</span></p>
           </article>
 
           <article class="work reveal" style="--accent:#f98104">
@@ -104,7 +121,7 @@
               </div>
               <h3 class="work-title">Arches</h3>
             </a>
-            <p class="work-meta"><span>Abstract</span><span class="work-price">Price on request</span></p>
+            <p class="work-meta"><span><i class="work-swatch" aria-hidden="true"></i>Abstract</span><span class="work-price">Price on request</span></p>
           </article>
 
           <article class="work reveal" style="--accent:#d8536a">
@@ -114,7 +131,7 @@
               </div>
               <h3 class="work-title">Two Tulips</h3>
             </a>
-            <p class="work-meta"><span>Flowers</span><span class="work-price">Price on request</span></p>
+            <p class="work-meta"><span><i class="work-swatch" aria-hidden="true"></i>Flowers</span><span class="work-price">Price on request</span></p>
           </article>
         </div>
       </section>
@@ -126,7 +143,7 @@
         </figure>
         <div>
           <p class="eyebrow">About me</p>
-          <h2 id="about-title">Drawing since elementary school</h2>
+          <h2 id="about-title">Drawing since <span class="mark" style="--accent:#4db3c6">elementary school</span></h2>
           <div class="prose">
             <p>“During my school years, at the beginning, it was a challenge. But it has turned into a skill, some knowledge, and my inspiration.”</p>
             <p>Anja lives in Michigan. Art has been a hobby since her first drawing in elementary school, through school projects and college, and it has become an anti-stress, a therapy, and a way of telling stories without words.</p>
@@ -138,7 +155,7 @@
       <section class="section band" aria-labelledby="contact-title">
         <div>
           <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">Interested in a piece?</h2>
+          <h2 id="contact-title">Interested in a <span class="mark" style="--accent:#d8536a">piece</span>?</h2>
           <p>Email or call, and mention the title of the work.</p>
         </div>
         <div class="band-contact">

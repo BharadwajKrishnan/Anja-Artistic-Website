@@ -21,6 +21,14 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div class="washes" aria-hidden="true">
+    <span class="wash wash--1"></span>
+    <span class="wash wash--2"></span>
+    <span class="wash wash--3"></span>
+    <span class="wash wash--4"></span>
+    <span class="wash wash--5"></span>
+  </div>
+
   <header class="site-header">
     <div class="wrap">
       <a class="wordmark" href="index.html">Anja</a>
@@ -44,7 +52,7 @@
 
       <div class="page-head">
         <p class="eyebrow">About me</p>
-        <h1>My name is Anja, and I live somewhere in Michigan.</h1>
+        <h1>My name is Anja, and I live <span class="mark" style="--accent:#3b5db0">somewhere in Michigan</span>.</h1>
       </div>
 
       <div class="about">
@@ -65,6 +73,25 @@
           </figure>
         </aside>
       </div>
+
+      <section class="palette-section" aria-labelledby="palette-title">
+        <p class="eyebrow" id="palette-title">Her palette</p>
+        <p class="muted">One colour sampled from each painting. Choose a swatch to see the work.</p>
+        <ul class="palette" role="list">
+            <li><a href="paintings.html#evening-table" style="--accent:#ef8f2c" title="Evening Table"><span class="visually-hidden">Evening Table</span></a></li>
+            <li><a href="paintings.html#pear-and-red-bowl" style="--accent:#9e2b2b" title="Pear and Red Bowl"><span class="visually-hidden">Pear and Red Bowl</span></a></li>
+            <li><a href="paintings.html#study-in-grey" style="--accent:#8f7f6a" title="Study in Grey"><span class="visually-hidden">Study in Grey</span></a></li>
+            <li><a href="paintings.html#blue-sphere" style="--accent:#3f4d7a" title="Blue Sphere"><span class="visually-hidden">Blue Sphere</span></a></li>
+            <li><a href="paintings.html#clouds-over-the-valley" style="--accent:#3b5db0" title="Clouds over the Valley"><span class="visually-hidden">Clouds over the Valley</span></a></li>
+            <li><a href="paintings.html#skyline-at-dusk" style="--accent:#f28a3d" title="Skyline at Dusk"><span class="visually-hidden">Skyline at Dusk</span></a></li>
+            <li><a href="paintings.html#blue-hills" style="--accent:#6b6fb5" title="Blue Hills"><span class="visually-hidden">Blue Hills</span></a></li>
+            <li><a href="paintings.html#current" style="--accent:#3f7f8f" title="Current"><span class="visually-hidden">Current</span></a></li>
+            <li><a href="paintings.html#quilt-star" style="--accent:#e3162a" title="Quilt Star"><span class="visually-hidden">Quilt Star</span></a></li>
+            <li><a href="paintings.html#arches" style="--accent:#f98104" title="Arches"><span class="visually-hidden">Arches</span></a></li>
+            <li><a href="paintings.html#blue-lily" style="--accent:#4db3c6" title="Blue Lily"><span class="visually-hidden">Blue Lily</span></a></li>
+            <li><a href="paintings.html#two-tulips" style="--accent:#d8536a" title="Two Tulips"><span class="visually-hidden">Two Tulips</span></a></li>
+        </ul>
+      </section>
 
     </div>
   </main>
