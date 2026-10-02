@@ -13,7 +13,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,400..800&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,400..800&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&amp;family=Caveat:wght@500..700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="js/main.js" defer></script>
@@ -87,7 +87,7 @@
       </div>
 
       <section class="section" aria-labelledby="selected-title">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div>
             <p class="eyebrow">Selected works</p>
             <h2 id="selected-title">Four to <span class="mark" style="--accent:#ef8f2c">start with</span></h2>
@@ -171,26 +171,22 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <div class="footer-grid footer-grid--two">
-        <div>
-          <a class="wordmark" href="index.html">Anja</a>
-          <p class="footer-note">Paintings and drawings by an aspiring artist in Michigan.</p>
-        </div>
-        <div>
-          <p class="eyebrow">Pages</p>
-          <ul role="list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="paintings.html">Paintings and Drawings</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
+      <p class="footer-hand">Thank you for looking.</p>
+      <p class="footer-statement reveal">Paintings and drawings by an <em>aspiring artist</em> in Michigan.</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <ul role="list">
+          <li><a href="index.html" style="--accent:#ef8f2c">Home</a></li>
+          <li><a href="paintings.html" style="--accent:#4db3c6">Paintings and Drawings</a></li>
+          <li><a href="about.html" style="--accent:#d8536a">About Me</a></li>
+          <li><a href="contact.html" style="--accent:#9bbe3b">Contact</a></li>
+        </ul>
+      </nav>
       <div class="footer-bottom">
         <span>© 2026 Anja. All artwork on this site is by Anja.</span>
-        <span>Prices are listed with each work.</span>
+        <span class="footer-prices">Prices are listed with each work.</span>
       </div>
     </div>
+    <div class="footer-wordmark" aria-hidden="true">Anja</div>
   </footer>
 </body>
 </html>

@@ -591,3 +591,125 @@
     html.js .reveal { transition-delay: calc(var(--i, 0) * 70ms); }
   }
 }
+
+/* =============================================================
+   Artistic text layer: handwritten notes, drop cap, paper cards,
+   and the painted footer.
+   ============================================================= */
+@layer base {
+  :root { --font-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive; }
+}
+
+@layer components {
+  /* Labels become handwritten notes with a squiggle underneath */
+  .eyebrow {
+    display: table; position: relative;
+    font-family: var(--font-hand); font-size: 1.6rem; font-weight: 600; line-height: 1;
+    letter-spacing: 0; text-transform: none; color: var(--ink);
+    transform: rotate(-2deg); transform-origin: left bottom; padding-bottom: 9px;
+  }
+  .eyebrow::after {
+    content: ""; position: absolute; left: 0; right: -4px; bottom: 0; height: 8px;
+    background: var(--note, #ef8f2c);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='8' viewBox='0 0 36 8'%3E%3Cpath d='M0 4 Q 4.5 0 9 4 T 18 4 T 27 4 T 36 4' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 36px 8px;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='8' viewBox='0 0 36 8'%3E%3Cpath d='M0 4 Q 4.5 0 9 4 T 18 4 T 27 4 T 36 4' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 36px 8px;
+  }
+  .page-head .eyebrow { --note: #d8536a; }
+  .teaser .eyebrow { --note: #4db3c6; }
+  .band .eyebrow { --note: #d8536a; }
+  .palette-section .eyebrow { --note: #9bbe3b; }
+  .contact-item:nth-child(1) .eyebrow { --note: #2c9dbb; }
+  .contact-item:nth-child(2) .eyebrow { --note: #e5607c; }
+  .lightbox .eyebrow { --note: var(--accent); }
+  .section-head .eyebrow, .page-head .eyebrow { margin-bottom: var(--space-3); }
+
+  /* Her name under the hero quote, as a signature */
+  .hero-attrib {
+    display: table; font-family: var(--font-hand); font-size: 2.4rem; font-weight: 700; line-height: 1;
+    color: var(--ink); transform: rotate(-4deg); transform-origin: left center; margin-top: var(--space-5);
+  }
+
+  /* Prices and counts read like handwritten tags */
+  .work-price, .lightbox-price, .filter-count {
+    font-family: var(--font-hand); font-weight: 600; font-size: 1.3rem; line-height: 1; color: var(--ink);
+  }
+  .work-meta { align-items: baseline; }
+  .lightbox-price { font-size: 1.8rem; display: table; transform: rotate(-2deg); }
+  .filter-count { font-size: 1.4rem; }
+
+  /* Home: the quoted line in the About teaser */
+  .teaser .prose p:first-child {
+    font-style: italic; font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.3; color: var(--ink);
+    padding-left: var(--space-4); border-left: 4px solid #4db3c6;
+  }
+
+  /* Home: the contact band becomes a tilted paper card */
+  .band {
+    background: rgba(255, 255, 255, .72); border: 1.5px solid var(--ink); border-radius: 6px;
+    transform: rotate(-.8deg); box-shadow: 12px 14px 0 -2px rgba(216, 83, 106, .45);
+  }
+  .band-contact { font-size: 1.15rem; }
+
+  /* About: drop cap, paper-card quote, closing note */
+  .about .prose > p:first-child::first-letter {
+    float: left; font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+    font-size: 4.6em; line-height: .78; padding: .06em .12em 0 0; color: #ef8f2c;
+  }
+  .pullquote {
+    position: relative; border-left: 0; margin-block: var(--space-7) var(--space-6);
+    padding: 1.5em 1.2em 1.2em 1.4em; background: rgba(255, 255, 255, .7);
+    border: 1.5px solid var(--ink); border-radius: 6px; transform: rotate(-1.2deg);
+    box-shadow: 12px 14px 0 -2px rgba(239, 143, 44, .5);
+  }
+  .pullquote::before {
+    content: "\201C"; position: absolute; top: -.32em; left: .12em;
+    font-family: var(--font-display); font-weight: 800; font-size: 5.5em; line-height: 1; color: #ef8f2c;
+  }
+  .about-music { font-style: italic; }
+  .contact-note { font-family: var(--font-hand); font-size: 1.5rem; line-height: 1.2; color: var(--ink); transform: rotate(-1.5deg); }
+
+  /* Footer: note, statement, marker links, and her name in her own colours */
+  .site-footer { overflow: hidden; padding-block: var(--space-7) 0; }
+  .footer-hand {
+    display: table; font-family: var(--font-hand); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1; color: #d8536a; transform: rotate(-3deg); transform-origin: left bottom;
+  }
+  .footer-statement {
+    margin-top: var(--space-4); max-width: 20ch;
+    font-family: var(--font-body); font-weight: 400; font-size: clamp(1.8rem, 4.2vw, 3.4rem);
+    line-height: 1.08; letter-spacing: -.015em; text-wrap: balance;
+  }
+  .footer-statement em {
+    font-style: italic; padding: 0 .12em; margin: 0 -.06em; border-radius: .16em;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    background: linear-gradient(100deg, transparent 1%, rgba(201, 184, 232, .75) 3%, rgba(201, 184, 232, .75) 97%, transparent 99%);
+  }
+  .footer-nav { margin-top: var(--space-6); }
+  .footer-nav ul { display: flex; flex-wrap: wrap; gap: .5rem 1.8rem; }
+  .footer-nav a {
+    --swipe: rgba(201, 184, 232, .7);
+    font-family: var(--font-display); font-weight: 700; font-stretch: 115%;
+    font-size: clamp(1.05rem, 1.8vw, 1.4rem); letter-spacing: -.01em; text-decoration: none;
+    padding: .1em .15em; margin-inline: -.15em;
+    background: linear-gradient(var(--swipe), var(--swipe)) no-repeat 0 78% / 0% 46%;
+    transition: background-size 380ms var(--ease);
+  }
+  @supports (color: color-mix(in oklab, red 50%, transparent)) {
+    .footer-nav a { --swipe: color-mix(in oklab, var(--accent) 48%, transparent); }
+  }
+  .footer-nav a:hover, .footer-nav a:focus-visible { background-size: 100% 46%; }
+  .footer-bottom { align-items: baseline; }
+  .footer-prices { font-family: var(--font-hand); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
+  .footer-wordmark {
+    margin-top: var(--space-5); margin-bottom: -.13em; text-align: center; user-select: none;
+    font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
+    font-size: clamp(7rem, 31vw, 27rem); line-height: .74; letter-spacing: -.045em;
+    background: linear-gradient(100deg, #ef8f2c, #e3162a, #d8536a, #6b6fb5, #3b5db0, #4db3c6, #3f7f8f, #9bbe3b, #f98104, #ef8f2c);
+    background-size: 240% 100%; -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .footer-wordmark { animation: pan 22s linear infinite alternate; }
+    @keyframes pan { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+  }
+}
