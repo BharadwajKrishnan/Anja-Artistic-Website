@@ -302,21 +302,6 @@
     "alt": "Two Tulips: a crimson and a blush-pink tulip in a terracotta pot on a dark table"
   },
   {
-    "slug": "pattern-study",
-    "title": "Pattern Study",
-    "category": "drawings",
-    "accent": "#6e6e73",
-    "description": "A pencil drawing packed with pattern: checkerboards bending into the distance, scales, stripes, zigzags, and rings. Shading alone separates one plane from the next.",
-    "alt": "Pattern Study: a pencil drawing packed with pattern: checkerboards bending into the distance, scales, stripes, zigzags, and rings",
-    "original": "originals/pattern-study.jpeg",
-    "crop": [
-      0.03,
-      0.02,
-      0.02,
-      0.05
-    ]
-  },
-  {
     "slug": "dark-vessel",
     "title": "Dark Vessel",
     "category": "drawings",
@@ -351,8 +336,8 @@
     "title": "Pattern in Grey",
     "category": "abstract",
     "accent": "#6b7480",
-    "description": "The patterns of the pencil study return in paint: checkerboards, scales, stripes, and rings in cool greys and whites. Without color, the composition depends on rhythm and tone.",
-    "alt": "Pattern in Grey: the patterns of the pencil study return in paint: checkerboards, scales, stripes, and rings in cool greys and whites",
+    "description": "Checkerboards, scales, stripes, and rings bend across the canvas in cool greys and whites. Without color, the composition depends on rhythm and tone.",
+    "alt": "Pattern in Grey: checkerboards, scales, stripes, and rings in cool greys and whites",
     "original": "originals/pattern-in-grey.jpeg",
     "crop": [
       0.07,
