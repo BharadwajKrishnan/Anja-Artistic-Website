@@ -166,6 +166,7 @@
 
   .site-footer { border-top: 1px solid var(--line); padding-block: var(--space-6) var(--space-5); font-size: 1rem; }
   .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--space-5); }
+  .footer-grid--two { grid-template-columns: 1.4fr 1fr; }
   .footer-grid .eyebrow { margin-bottom: var(--space-2); }
   .footer-grid ul { display: grid; gap: .35rem; }
   .footer-note { color: var(--ink-soft); max-width: 30ch; margin-top: var(--space-2); }
