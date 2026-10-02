@@ -1,0 +1,464 @@
+[
+  {
+    "slug": "evening-table",
+    "title": "Evening Table",
+    "category": "still-life",
+    "accent": "#ef8f2c",
+    "description": "A pillar candle glows in a pink pot beside a tall blue bottle, a green vase, and a small white creamer. Flat planes of color and shadows in lilac and teal give the arrangement a quiet, late-evening warmth.",
+    "alt": "Evening Table: a candle in a pink pot beside a tall blue bottle, a green vase, and a white creamer on a white table"
+  },
+  {
+    "slug": "current",
+    "title": "Current",
+    "category": "abstract",
+    "accent": "#3f7f8f",
+    "description": "Bands of teal, grey, and blue ripple across the canvas, and a striped figure surfaces from the pattern. It reads as a swimmer, a bird, or a current, depending on how long you look.",
+    "alt": "Current: rippling bands of teal, grey, and blue with a striped figure surfacing from the pattern"
+  },
+  {
+    "slug": "lilac-street",
+    "title": "Lilac Street",
+    "category": "landscape",
+    "accent": "#f39a1e",
+    "description": "Lilac buildings with deep violet windows line a street that runs toward a flight of steps. Yellow cylinders, orange cones, and spheres stand on the green like players on a stage.",
+    "alt": "Lilac Street: lilac buildings with deep violet windows line a street that runs toward a flight of steps",
+    "original": "originals/lilac-street.jpeg",
+    "crop": [
+      0.06,
+      0.035,
+      0.09,
+      0.06
+    ]
+  },
+  {
+    "slug": "blue-hair",
+    "title": "Blue Hair",
+    "category": "figures",
+    "accent": "#7a3f9d",
+    "description": "A woman with long blue-green hair and a green flower behind her ear looks out from a violet ground. Clean outlines and flat color give the portrait a calm, graphic strength.",
+    "alt": "Blue Hair: a woman with long blue-green hair and a green flower behind her ear looks out from a violet ground",
+    "original": "originals/blue-hair.jpeg",
+    "crop": [
+      0.03,
+      0.035,
+      0.01,
+      0.01
+    ]
+  },
+  {
+    "slug": "pear-and-red-bowl",
+    "title": "Pear and Red Bowl",
+    "category": "still-life",
+    "accent": "#9e2b2b",
+    "description": "A green-and-red pear leans toward a tall cream vessel, a terracotta pot, and a deep red bowl on a purple cloth. Sharp edges and saturated shapes turn kitchen objects into something monumental.",
+    "alt": "Pear and Red Bowl: a green and red pear, a tall cream vessel, a terracotta pot, and a deep red bowl on a purple cloth"
+  },
+  {
+    "slug": "quilt-star",
+    "title": "Quilt Star",
+    "category": "abstract",
+    "accent": "#e3162a",
+    "description": "An eight-pointed star radiates through rings of lime, scarlet, and plum. The hard-edged symmetry borrows from quilt blocks and stained glass, held in tension by clashing complementary colors.",
+    "alt": "Quilt Star: an eight-pointed star in rings of lime, scarlet, and plum"
+  },
+  {
+    "slug": "moon-and-tear",
+    "title": "Moon and Tear",
+    "category": "figures",
+    "accent": "#2f5fa8",
+    "description": "A full moon hangs over a violet sea while a blue figure sits on the shore, looking out. At the edge of the picture a pale face sheds a single tear.",
+    "alt": "Moon and Tear: a full moon hangs over a violet sea while a blue figure sits on the shore, looking out",
+    "original": "originals/moon-and-tear.jpeg",
+    "crop": [
+      0.03,
+      0.06,
+      0.08,
+      0.06
+    ]
+  },
+  {
+    "slug": "hookah",
+    "title": "Hookah",
+    "category": "still-life",
+    "accent": "#d9a02b",
+    "description": "A hookah with a faceted glass stem, a red base, and a coiled hose stands on a dark table. Behind it the wall fades from pale cream to deep ochre.",
+    "alt": "Hookah: a hookah with a faceted glass stem, a red base, and a coiled hose stands on a dark table",
+    "original": "originals/hookah.jpeg"
+  },
+  {
+    "slug": "blue-lily",
+    "title": "Blue Lily",
+    "category": "flowers",
+    "accent": "#4db3c6",
+    "description": "A single lily in translucent washes of turquoise and blue, its stamens drawn in deep violet, on a pale lavender ground. The layered washes let the paper glow through the petals.",
+    "alt": "Blue Lily: a turquoise lily in translucent watercolor on a pale lavender ground"
+  },
+  {
+    "slug": "violet-skyline",
+    "title": "Violet Skyline",
+    "category": "landscape",
+    "accent": "#7b4fa6",
+    "description": "A row of violet towers stands against a yellow sky and repeats, upside down, in the water below. Flat bands of purple, yellow, and blue turn a city into pure pattern.",
+    "alt": "Violet Skyline: a row of violet towers stands against a yellow sky and repeats, upside down, in the water below",
+    "original": "originals/violet-skyline.jpeg",
+    "crop": [
+      0.03,
+      0.0,
+      0.07,
+      0.02
+    ]
+  },
+  {
+    "slug": "waves-of-color",
+    "title": "Waves of Color",
+    "category": "abstract",
+    "accent": "#e8552b",
+    "description": "Wavy blocks of red, yellow, blue, orange, and green fit together like pieces of a puzzle. Darker veils laid over the top add a second, slower rhythm.",
+    "alt": "Waves of Color: wavy blocks of red, yellow, blue, orange, and green fit together like pieces of a puzzle",
+    "original": "originals/waves-of-color.jpeg",
+    "crop": [
+      0.02,
+      0.0,
+      0.04,
+      0.0
+    ]
+  },
+  {
+    "slug": "panda-and-friends",
+    "title": "Panda and Friends",
+    "category": "still-life",
+    "accent": "#e08a3c",
+    "description": "A toy panda, a white chef figure, a doll's head, and a ruffled blue flower crowd together on a green table. A warm orange wall makes the blues and whites stand out.",
+    "alt": "Panda and Friends: a toy panda, a white chef figure, a doll's head, and a ruffled blue flower crowd together on a green table",
+    "original": "originals/panda-and-friends.jpeg",
+    "crop": [
+      0.02,
+      0.01,
+      0.03,
+      0.03
+    ]
+  },
+  {
+    "slug": "clown-on-a-swing",
+    "title": "Clown on a Swing",
+    "category": "figures",
+    "accent": "#c2413b",
+    "description": "A clown doll in a polka-dot suit sits on a swing, half white and half black, with a red nose and a frilled collar. The warm grey wash behind it keeps all attention on the costume.",
+    "alt": "Clown on a Swing: a clown doll in a polka-dot suit sits on a swing, half white and half black, with a red nose and a frilled collar",
+    "original": "originals/clown-on-a-swing.jpeg"
+  },
+  {
+    "slug": "pitcher-and-bottle",
+    "title": "Pitcher and Bottle",
+    "category": "drawings",
+    "accent": "#4a4a4f",
+    "description": "A small pitcher balanced on a rounded jar stands beside a tall bottle, drawn in deep blacks and soft greys. Their shadows stretch across a pale tabletop.",
+    "alt": "Pitcher and Bottle: a small pitcher balanced on a rounded jar stands beside a tall bottle, drawn in deep blacks and soft greys",
+    "original": "originals/pitcher-and-bottle.jpeg",
+    "crop": [
+      0.08,
+      0.08,
+      0.07,
+      0.08
+    ]
+  },
+  {
+    "slug": "blue-hills",
+    "title": "Blue Hills",
+    "category": "landscape",
+    "accent": "#6b6fb5",
+    "description": "Layered hills in teal, violet, and dusty pink stack toward a bare linen sky. A landscape reduced to overlapping waves of cool color.",
+    "alt": "Blue Hills: layered hills in teal, violet, and pink beneath a bare linen sky"
+  },
+  {
+    "slug": "clouds-over-the-valley",
+    "title": "Clouds over the Valley",
+    "category": "landscape",
+    "accent": "#3b5db0",
+    "description": "Cumulus clouds drift across a deep blue sky above rolling green hills and a line of trees. The clouds are painted thickly, so the sky feels heavier and closer than the land beneath it.",
+    "alt": "Clouds over the Valley: thick white clouds in a deep blue sky above green hills"
+  },
+  {
+    "slug": "nine-prints",
+    "title": "Nine Prints",
+    "category": "abstract",
+    "accent": "#3a46b0",
+    "description": "Nine small prints arranged in a grid: sunbursts, striped hills, and a wide-eyed creature, alone and then layered over one another. Blues and violets shift from square to square as the images combine.",
+    "alt": "Nine Prints: nine small prints arranged in a grid: sunbursts, striped hills, and a wide-eyed creature, alone and then layered over one another",
+    "original": "originals/nine-prints.jpeg"
+  },
+  {
+    "slug": "eggs-on-a-cloth",
+    "title": "Eggs on a Cloth",
+    "category": "still-life",
+    "accent": "#5aa7c7",
+    "description": "Six eggs in blue, violet, and red rest in the hollows of a white cloth under a washed blue sky. Each one sits on its own small pool of colored shadow.",
+    "alt": "Eggs on a Cloth: six eggs in blue, violet, and red rest in the hollows of a white cloth under a washed blue sky",
+    "original": "originals/eggs-on-a-cloth.jpeg",
+    "crop": [
+      0.0,
+      0.025,
+      0.035,
+      0.0
+    ]
+  },
+  {
+    "slug": "arches",
+    "title": "Arches",
+    "category": "abstract",
+    "accent": "#f98104",
+    "description": "Orange and blue arches loop over a violet ground, overlapping into unexpected greens and browns where they cross. A playful, rhythmic composition, like a bassline made visible.",
+    "alt": "Arches: orange and blue arches looping over a violet ground"
+  },
+  {
+    "slug": "overlapping-vessels",
+    "title": "Overlapping Vessels",
+    "category": "abstract",
+    "accent": "#a8324f",
+    "description": "Bottles, jars, and a tall vase overlap in purple, crimson, and teal, each shape showing through the next. Where two forms cross, a third color appears.",
+    "alt": "Overlapping Vessels: bottles, jars, and a tall vase overlap in purple, crimson, and teal, each shape showing through the next",
+    "original": "originals/overlapping-vessels.jpeg",
+    "crop": [
+      0.0,
+      0.03,
+      0.0,
+      0.02
+    ]
+  },
+  {
+    "slug": "banana-and-apple",
+    "title": "Banana and Apple",
+    "category": "still-life",
+    "accent": "#e0b93a",
+    "description": "A banana and a red apple sit in a glass bowl on a round, sunlit table. The stormy grey wall behind makes the yellow glow.",
+    "alt": "Banana and Apple: a banana and a red apple sit in a glass bowl on a round, sunlit table",
+    "original": "originals/banana-and-apple.jpeg",
+    "crop": [
+      0.045,
+      0.015,
+      0.05,
+      0.02
+    ]
+  },
+  {
+    "slug": "skyline-at-dusk",
+    "title": "Skyline at Dusk",
+    "category": "landscape",
+    "accent": "#f28a3d",
+    "description": "A skyline in silhouette against a sky fading from clear blue to burning orange. The gradient washes do the storytelling; the buildings are only shadows.",
+    "alt": "Skyline at Dusk: a silhouetted city skyline against a sky fading from blue to orange"
+  },
+  {
+    "slug": "mask-and-clown",
+    "title": "Mask and Clown",
+    "category": "still-life",
+    "accent": "#d9788f",
+    "description": "A golden mask draped with beads sits on a turned wooden stand, with a small clown doll leaning at its foot. Blue on one side and pink on the other frame the pair.",
+    "alt": "Mask and Clown: a golden mask draped with beads sits on a turned wooden stand, with a small clown doll leaning at its foot",
+    "original": "originals/mask-and-clown.jpeg",
+    "crop": [
+      0.05,
+      0.05,
+      0.05,
+      0.03
+    ]
+  },
+  {
+    "slug": "color-windows",
+    "title": "Color Windows",
+    "category": "abstract",
+    "accent": "#c9789a",
+    "description": "Soft washes of green, blue, rose, violet, and gold fill a grid of panes divided by white lines. Curved shapes run across the panes like a view through a window.",
+    "alt": "Color Windows: soft washes of green, blue, rose, violet, and gold fill a grid of panes divided by white lines",
+    "original": "originals/color-windows.jpeg",
+    "crop": [
+      0.06,
+      0.03,
+      0.07,
+      0.04
+    ]
+  },
+  {
+    "slug": "wine-bag-and-shoe",
+    "title": "Wine, Bag, and Shoe",
+    "category": "still-life",
+    "accent": "#3b2f7a",
+    "description": "A wine bottle, a glass, a black handbag, and a violet high-heeled shoe are arranged on a white cloth. The folds behind them are washed in pale green and blue.",
+    "alt": "Wine, Bag, and Shoe: a wine bottle, a glass, a black handbag, and a violet high-heeled shoe are arranged on a white cloth",
+    "original": "originals/wine-bag-and-shoe.jpeg",
+    "crop": [
+      0.04,
+      0.08,
+      0.05,
+      0.07
+    ]
+  },
+  {
+    "slug": "two-tulips",
+    "title": "Two Tulips",
+    "category": "flowers",
+    "accent": "#d8536a",
+    "description": "Two tulips, one crimson and one blush pink, rise from a terracotta pot on a dark table. Loose, delicate washes keep the flowers light while the shadow anchors them.",
+    "alt": "Two Tulips: a crimson and a blush-pink tulip in a terracotta pot on a dark table"
+  },
+  {
+    "slug": "pattern-study",
+    "title": "Pattern Study",
+    "category": "drawings",
+    "accent": "#6e6e73",
+    "description": "A pencil drawing packed with pattern: checkerboards bending into the distance, scales, stripes, zigzags, and rings. Shading alone separates one plane from the next.",
+    "alt": "Pattern Study: a pencil drawing packed with pattern: checkerboards bending into the distance, scales, stripes, zigzags, and rings",
+    "original": "originals/pattern-study.jpeg",
+    "crop": [
+      0.03,
+      0.02,
+      0.02,
+      0.05
+    ]
+  },
+  {
+    "slug": "dark-vessel",
+    "title": "Dark Vessel",
+    "category": "drawings",
+    "accent": "#5a5a5e",
+    "description": "A single tall vessel with two small handles, its dark mouth open to the viewer, drawn in soft black on a rough ground. Light catches the rim and the bands around its base.",
+    "alt": "Dark Vessel: a single tall vessel with two small handles, its dark mouth open to the viewer, drawn in soft black on a rough ground",
+    "original": "originals/dark-vessel.jpeg",
+    "crop": [
+      0.1,
+      0.03,
+      0.1,
+      0.04
+    ]
+  },
+  {
+    "slug": "coffee-pot",
+    "title": "Coffee Pot",
+    "category": "still-life",
+    "accent": "#7d756b",
+    "description": "A tall coffee pot with a long spout and a looping handle, painted in transparent grey washes. A small ball and a dark tray anchor it to the table.",
+    "alt": "Coffee Pot: a tall coffee pot with a long spout and a looping handle, painted in transparent grey washes",
+    "original": "originals/coffee-pot.jpeg",
+    "crop": [
+      0.08,
+      0.04,
+      0.01,
+      0.05
+    ]
+  },
+  {
+    "slug": "pattern-in-grey",
+    "title": "Pattern in Grey",
+    "category": "abstract",
+    "accent": "#6b7480",
+    "description": "The patterns of the pencil study return in paint: checkerboards, scales, stripes, and rings in cool greys and whites. Without color, the composition depends on rhythm and tone.",
+    "alt": "Pattern in Grey: the patterns of the pencil study return in paint: checkerboards, scales, stripes, and rings in cool greys and whites",
+    "original": "originals/pattern-in-grey.jpeg",
+    "crop": [
+      0.07,
+      0.08,
+      0.05,
+      0.05
+    ]
+  },
+  {
+    "slug": "study-in-grey",
+    "title": "Study in Grey",
+    "category": "still-life",
+    "accent": "#8f7f6a",
+    "description": "A sphere, a cube, a glass jar, and two dark cups under one light source, painted in warm greys. A value study that strips color away to show how light alone builds form.",
+    "alt": "Study in Grey: a sphere, a cube, a glass jar, and two dark cups painted in warm greys"
+  },
+  {
+    "slug": "melon-and-orange",
+    "title": "Melon and Orange",
+    "category": "still-life",
+    "accent": "#5aa84a",
+    "description": "A green melon cut open and a bright orange sit behind a long blue-and-yellow shape lying across a grey tabletop. Loose, wet washes keep the fruit fresh and luminous.",
+    "alt": "Melon and Orange: a green melon cut open and a bright orange sit behind a long blue-and-yellow shape lying across a grey tabletop",
+    "original": "originals/melon-and-orange.jpeg",
+    "crop": [
+      0.06,
+      0.06,
+      0.06,
+      0.08
+    ]
+  },
+  {
+    "slug": "blue-jug-and-striped-pot",
+    "title": "Blue Jug and Striped Pot",
+    "category": "still-life",
+    "accent": "#6f7fc0",
+    "description": "A tall blue jug, a striped round pot, a drinking glass, and an egg in its cup, painted in thin washes of violet and aqua. The white cloth beneath them is drawn with only a few grey folds.",
+    "alt": "Blue Jug and Striped Pot: a tall blue jug, a striped round pot, a drinking glass, and an egg in its cup, painted in thin washes of violet and aqua",
+    "original": "originals/blue-jug-and-striped-pot.jpeg",
+    "crop": [
+      0.03,
+      0.03,
+      0.01,
+      0.02
+    ]
+  },
+  {
+    "slug": "pale-eggs",
+    "title": "Pale Eggs",
+    "category": "still-life",
+    "accent": "#9aa3bd",
+    "description": "Five pale eggs settle into a white cloth beneath a grey-violet sky. The color is held back almost to nothing, so the cast shadows do the work.",
+    "alt": "Pale Eggs: five pale eggs settle into a white cloth beneath a grey-violet sky",
+    "original": "originals/pale-eggs.jpeg",
+    "crop": [
+      0.06,
+      0.02,
+      0.055,
+      0.035
+    ]
+  },
+  {
+    "slug": "white-drapery",
+    "title": "White Drapery",
+    "category": "still-life",
+    "accent": "#8a8f9e",
+    "description": "A white cloth rises into peaks and falls into deep folds, modelled in soft greys against a sandy ground. A study of how fabric holds light and shadow.",
+    "alt": "White Drapery: a white cloth rises into peaks and falls into deep folds, modelled in soft greys against a sandy ground",
+    "original": "originals/white-drapery.jpeg",
+    "crop": [
+      0.025,
+      0.05,
+      0.02,
+      0.02
+    ]
+  },
+  {
+    "slug": "empty-room",
+    "title": "Empty Room",
+    "category": "drawings",
+    "accent": "#55504a",
+    "description": "An empty interior drawn in soft black: tall windows, a round column, and a doorway opening to the outside. Smudged shadows give the room its depth and quiet.",
+    "alt": "Empty Room: an empty interior drawn in soft black: tall windows, a round column, and a doorway opening to the outside",
+    "original": "originals/empty-room.jpeg"
+  },
+  {
+    "slug": "blue-folds",
+    "title": "Blue Folds",
+    "category": "still-life",
+    "accent": "#6fb3d6",
+    "description": "A hanging cloth painted in the lightest blues and greys, with a few sharp creases catching the light. More suggestion than description, it is a study in restraint.",
+    "alt": "Blue Folds: a hanging cloth painted in the lightest blues and greys, with a few sharp creases catching the light",
+    "original": "originals/blue-folds.jpeg",
+    "crop": [
+      0.03,
+      0.03,
+      0.02,
+      0.04
+    ]
+  },
+  {
+    "slug": "blue-sphere",
+    "title": "Blue Sphere",
+    "category": "still-life",
+    "accent": "#3f4d7a",
+    "description": "A single sphere modelled in indigo washes, its highlight almost bare paper, casting a long shadow across a divided ground. A study of light in one color.",
+    "alt": "Blue Sphere: a single sphere painted in indigo watercolor washes with a long cast shadow"
+  }
+]

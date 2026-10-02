@@ -12,7 +12,7 @@ Plain HTML, CSS, and JavaScript. No build step, no framework, no backend.
 | `about.html` | About Me |
 | `contact.html` | Contact |
 
-Shared files: `css/styles.css`, `js/main.js`, `images/artworks/` (one 1600px and one 800px JPEG per work), `images/og.jpg` (link preview), `favicon.svg`.
+Shared files: `css/styles.css`, `js/main.js`, `artworks.json` and `prices.json` (the artwork data), `tools/build_site.py` (generates the gallery), `images/artworks/` (two web-sized JPEGs per work), `originals/` (the source photos), `images/og.jpg` (link preview), `favicon.svg`.
 
 ## Run it locally
 
@@ -26,18 +26,36 @@ Then open http://localhost:8080. Opening `index.html` directly from Finder also 
 
 ## Add a new artwork
 
-1. Put the photo of the painting in a folder on your computer.
-2. In `tools/optimize_images.py`, add a line to `ARTWORKS`, for example `("my-photo.jpg", "red-barn")`. The slug (second value) becomes the file name and the link, so use lowercase letters and hyphens.
-3. Optionally add a colour for its shadow to `ACCENT_OVERRIDES`; otherwise one is sampled from the painting.
-4. Run the script, pointing it at that folder:
+All artwork details live in `artworks.json`. The gallery cards are generated from it, so nothing has to be copied by hand.
 
-   ```bash
-   python3 tools/optimize_images.py /path/to/that/folder
+1. Put the photo in the `originals/` folder, named after the work, for example `originals/red-barn.jpeg`.
+2. Add an entry to `artworks.json` where you want it to appear in the gallery:
+
+   ```json
+   {
+     "slug": "red-barn",
+     "title": "Red Barn",
+     "category": "landscape",
+     "accent": "#b8322a",
+     "description": "Two sentences about the work.",
+     "alt": "Red Barn: a short visual description",
+     "original": "originals/red-barn.jpeg",
+     "crop": [0.02, 0.0, 0.03, 0.0]
+   }
    ```
 
-   It writes the two JPEGs and prints the width, height, and accent colour. `images/artworks/manifest.json` keeps the same numbers.
-5. In `paintings.html`, copy one `<article class="work …">` block, paste it where you want the work to appear, and replace the slug, title, category, description, alt text, dimensions, and `--accent`. For a landscape-format painting add the `work--landscape` class.
-6. To feature it on the home page, copy one of the cards in the "Selected works" section of `index.html`.
+   `accent` is the colour of the work's shadow. `crop` is optional: the fraction to trim from the left, top, right, and bottom when the photo shows the table or wall behind the work.
+3. Add a line for it in `prices.json`.
+4. Run the build:
+
+   ```bash
+   python3 tools/build_site.py
+   ```
+
+   It makes the web-sized images and rewrites the gallery, the palette on the About page, and the work counts. Add `--force` to re-make images after changing a crop.
+5. To feature it on the home page, copy one of the cards in the "Selected works" section of `index.html`.
+
+The first twelve works have no file in `originals/`; their web images are already in `images/artworks/`.
 
 ## Set the prices
 
@@ -47,17 +65,11 @@ Prices live in `prices.json`, one line per artwork:
 "evening-table": "$450",
 ```
 
-Put the price text you want shown (any currency or wording), then run:
-
-```bash
-python3 tools/set_prices.py
-```
-
-That writes the price into the gallery card, the lightbox, and the featured cards on the home page. A `null` value shows "Price coming soon" until a price is set.
+Put the price text you want shown, then run `python3 tools/build_site.py`. A `null` value shows "Price coming soon".
 
 ## Categories
 
-The filter buttons match the `data-category` value on each card: `still-life`, `landscape`, `abstract`, `flowers`. To add a category, add a button in the `filters` block and use the new value on the cards.
+The filter buttons match the `category` value of each work: `still-life`, `landscape`, `abstract`, `flowers`, `figures`, `drawings`. To add a category, add it to `CATEGORIES` in `tools/build_site.py` and add a button in the `filters` block of `paintings.html`.
 
 ## Contact details
 

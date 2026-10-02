@@ -525,6 +525,8 @@
   .chip[data-filter="landscape"] { --dot: #3b5db0; }
   .chip[data-filter="abstract"] { --dot: #e3162a; }
   .chip[data-filter="flowers"] { --dot: #d8536a; }
+  .chip[data-filter="figures"] { --dot: #7a3f9d; }
+  .chip[data-filter="drawings"] { --dot: #55504a; }
 
   /* Lightbox: the colour blooms out from the centre */
   @media (prefers-reduced-motion: no-preference) {
