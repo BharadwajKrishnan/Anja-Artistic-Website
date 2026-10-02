@@ -669,7 +669,7 @@
   .contact-note { font-family: var(--font-hand); font-size: 1.5rem; line-height: 1.2; color: var(--ink); transform: rotate(-1.5deg); }
 
   /* Footer: note, statement, marker links, and her name in her own colours */
-  .site-footer { overflow: hidden; padding-block: var(--space-7) var(--space-4); }
+  .site-footer { overflow: hidden; padding-block: var(--space-7) var(--space-5); }
   .footer-hand {
     display: table; font-family: var(--font-hand); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.4rem);
     line-height: 1; color: #d8536a; transform: rotate(-3deg); transform-origin: left bottom;
@@ -700,18 +700,6 @@
   .footer-nav a:hover, .footer-nav a:focus-visible { background-size: 100% 46%; }
   .footer-bottom { align-items: baseline; }
   .footer-prices { font-family: var(--font-hand); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
-  .footer-wordmark {
-    margin-top: var(--space-5); padding-bottom: .12em; text-align: center; user-select: none;
-    font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
-    font-size: clamp(5.5rem, 26vw, 22rem); line-height: 1.02; letter-spacing: -.045em;
-    background: linear-gradient(100deg, #ef8f2c, #e3162a, #d8536a, #6b6fb5, #3b5db0, #4db3c6, #3f7f8f, #9bbe3b, #f98104, #ef8f2c);
-    background-size: 240% 100%; -webkit-background-clip: text; background-clip: text;
-    color: transparent; -webkit-text-fill-color: transparent;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .footer-wordmark { animation: pan 22s linear infinite alternate; }
-    @keyframes pan { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
-  }
 }
 
 /* ---------- Layout fixes ---------- */
