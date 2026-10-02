@@ -36,6 +36,27 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
     revealables.forEach(function (el) { io.observe(el); });
+
+    /* Safety net: if the observer is slow or never fires, anything that has
+       scrolled into view is shown anyway, so content can never stay hidden. */
+    var pending = false;
+    var sweep = function () {
+      pending = false;
+      var limit = window.innerHeight;
+      revealables.forEach(function (el) {
+        if (!el.classList.contains('is-visible') && !el.hidden && el.getBoundingClientRect().top < limit) {
+          el.classList.add('is-visible');
+          io.unobserve(el);
+        }
+      });
+    };
+    var queueSweep = function () {
+      if (!pending) { pending = true; setTimeout(sweep, 250); }
+    };
+    window.addEventListener('scroll', queueSweep, { passive: true });
+    window.addEventListener('resize', queueSweep);
+    window.addEventListener('load', queueSweep);
+    setTimeout(sweep, 1200);
   } else {
     revealables.forEach(function (el) { el.classList.add('is-visible'); });
   }

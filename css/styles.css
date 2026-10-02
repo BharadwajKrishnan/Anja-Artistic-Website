@@ -433,7 +433,7 @@
   /* Paper grain over everything (the lightbox lives in the top layer above it) */
   body::after {
     content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none;
-    opacity: .32; mix-blend-mode: multiply; background-size: 220px 220px;
+    opacity: .3; background-size: 220px 220px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
@@ -443,8 +443,8 @@
   .washes { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
   .wash {
     position: absolute; width: 52vmax; height: 52vmax; border-radius: 50%;
-    filter: blur(64px); opacity: .27; will-change: transform;
-    background: radial-gradient(circle at 45% 45%, var(--c), transparent 66%);
+    opacity: .42;
+    background: radial-gradient(circle at 50% 50%, var(--c) 0%, transparent 68%);
   }
   .wash--1 { --c: #c9b8e8; top: -20vmax; left: -14vmax; }
   .wash--2 { --c: #7fd0e2; top: 4vmax; right: -18vmax; }
@@ -578,7 +578,7 @@
     .cursor {
       display: block; position: fixed; top: 0; left: 0; z-index: 60; pointer-events: none;
       width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--ink);
-      transform: translate(-50%, -50%); opacity: 0; mix-blend-mode: multiply;
+      transform: translate(-50%, -50%); opacity: 0;
       transition: width 260ms var(--ease), height 260ms var(--ease), background-color 260ms, border-color 260ms, opacity 300ms;
     }
     .cursor.is-on { opacity: .9; }
@@ -669,7 +669,7 @@
   .contact-note { font-family: var(--font-hand); font-size: 1.5rem; line-height: 1.2; color: var(--ink); transform: rotate(-1.5deg); }
 
   /* Footer: note, statement, marker links, and her name in her own colours */
-  .site-footer { overflow: hidden; padding-block: var(--space-7) 0; }
+  .site-footer { overflow: hidden; padding-block: var(--space-7) var(--space-4); }
   .footer-hand {
     display: table; font-family: var(--font-hand); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.4rem);
     line-height: 1; color: #d8536a; transform: rotate(-3deg); transform-origin: left bottom;
@@ -701,9 +701,9 @@
   .footer-bottom { align-items: baseline; }
   .footer-prices { font-family: var(--font-hand); font-size: 1.35rem; font-weight: 600; color: var(--ink); }
   .footer-wordmark {
-    margin-top: var(--space-5); margin-bottom: -.13em; text-align: center; user-select: none;
+    margin-top: var(--space-5); padding-bottom: .12em; text-align: center; user-select: none;
     font-family: var(--font-display); font-weight: 800; font-stretch: 125%;
-    font-size: clamp(7rem, 31vw, 27rem); line-height: .74; letter-spacing: -.045em;
+    font-size: clamp(5.5rem, 26vw, 22rem); line-height: 1.02; letter-spacing: -.045em;
     background: linear-gradient(100deg, #ef8f2c, #e3162a, #d8536a, #6b6fb5, #3b5db0, #4db3c6, #3f7f8f, #9bbe3b, #f98104, #ef8f2c);
     background-size: 240% 100%; -webkit-background-clip: text; background-clip: text;
     color: transparent; -webkit-text-fill-color: transparent;
@@ -711,5 +711,21 @@
   @media (prefers-reduced-motion: no-preference) {
     .footer-wordmark { animation: pan 22s linear infinite alternate; }
     @keyframes pan { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+  }
+}
+
+/* ---------- Layout fixes ---------- */
+@layer components {
+  /* Breathing room between handwritten labels, headings, and the text after them */
+  .hero .eyebrow, .teaser .eyebrow, .band .eyebrow, .contact-item .eyebrow, .palette-section .eyebrow, .lightbox .eyebrow { margin-bottom: var(--space-3); }
+  .teaser .prose { margin-top: var(--space-5); }
+  .band h2 + p { margin-top: var(--space-3); }
+  .page-head h1 + .lede { margin-top: var(--space-5); }
+
+  /* Wide works: give the frame the same height as the tall cards beside it */
+  @media (min-width: 640px) {
+    .works--gallery .work--landscape .work-frame {
+      aspect-ratio: auto; height: 0; padding-top: calc((100% - var(--space-5)) * .625);
+    }
   }
 }
