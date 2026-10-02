@@ -12,7 +12,7 @@ Plain HTML, CSS, and JavaScript. No build step, no framework, no backend.
 | `about.html` | About Me |
 | `contact.html` | Contact |
 
-Shared files: `css/styles.css`, `js/main.js`, `artworks.json` and `prices.json` (the artwork data), `tools/build_site.py` (generates the gallery), `images/artworks/` (two web-sized JPEGs per work), `originals/` (the source photos), `images/og.jpg` (link preview), `favicon.svg`.
+Shared files: `css/styles.css`, `js/main.js`, `artworks.json` and `prices.json` (the artwork data), `tools/build_site.py` (generates the gallery), `images/artworks/` (per work: a 1600px JPEG for the enlarged view and a light WebP thumbnail for cards), `originals/` (the source photos), `images/og.jpg` (link preview), `favicon.svg`.
 
 ## Run it locally
 

@@ -42,6 +42,12 @@
     var pending = false;
     var sweep = function () {
       pending = false;
+      revealables = revealables.filter(function (el) { return !el.classList.contains('is-visible'); });
+      if (!revealables.length) {
+        window.removeEventListener('scroll', queueSweep);
+        window.removeEventListener('resize', queueSweep);
+        return;
+      }
       var limit = window.innerHeight;
       revealables.forEach(function (el) {
         if (!el.classList.contains('is-visible') && !el.hidden && el.getBoundingClientRect().top < limit) {

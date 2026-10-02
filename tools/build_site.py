@@ -7,8 +7,8 @@ Usage:
 
 What it does
   1. For every artwork in artworks.json that has an "original" photo, makes
-     images/artworks/<slug>.jpg (up to 1600px) and <slug>-thumb.jpg (up to
-     800px), applying the optional "crop" (fractions trimmed from left, top,
+     images/artworks/<slug>.jpg (up to 1600px, for the enlarged view) and
+     <slug>-thumb.webp (up to 1000px, for cards), applying the optional "crop" (fractions trimmed from left, top,
      right, bottom) and keeping the photo's colour profile.
   2. Rewrites the gallery cards in paintings.html, the palette on about.html,
      the work counts, and the prices (from prices.json; null shows
@@ -28,7 +28,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IMG_DIR = os.path.join(ROOT, "images", "artworks")
 EMAIL = "anja.r@vanillaantalaha.com"
 PLACEHOLDER = "Price coming soon"
-LARGE, THUMB, QUALITY = 1600, 800, 82
+LARGE, THUMB, QUALITY = 1600, 1000, 82
+THUMB_QUALITY = 78
 CATEGORIES = {
     "still-life": "Still Life",
     "landscape": "Landscape",
@@ -64,10 +65,9 @@ def resize(im, long_edge):
 
 def make_images(work, force):
     large_path = os.path.join(IMG_DIR, work["slug"] + ".jpg")
-    thumb_path = os.path.join(IMG_DIR, work["slug"] + "-thumb.jpg")
+    thumb_path = os.path.join(IMG_DIR, work["slug"] + "-thumb.webp")
     original = work.get("original")
-    have = os.path.exists(large_path) and os.path.exists(thumb_path)
-    if original and os.path.exists(path(original)) and (force or not have):
+    if original and os.path.exists(path(original)) and (force or not os.path.exists(large_path)):
         im = ImageOps.exif_transpose(Image.open(path(original)))
         icc = im.info.get("icc_profile")
         im = im.convert("RGB")
@@ -75,13 +75,21 @@ def make_images(work, force):
             left, top, right, bottom = work["crop"]
             w, h = im.size
             im = im.crop((round(w * left), round(h * top), w - round(w * right), h - round(h * bottom)))
-        for target, size in ((large_path, LARGE), (thumb_path, THUMB)):
-            kwargs = dict(quality=QUALITY, optimize=True, progressive=True)
-            if icc:
-                kwargs["icc_profile"] = icc
-            resize(im, size).save(target, "JPEG", **kwargs)
-    if not (os.path.exists(large_path) and os.path.exists(thumb_path)):
-        sys.exit("Missing images for %s: add an original photo or the two JPEGs." % work["slug"])
+        kwargs = dict(quality=QUALITY, optimize=True, progressive=True)
+        if icc:
+            kwargs["icc_profile"] = icc
+        resize(im, LARGE).save(large_path, "JPEG", **kwargs)
+        force = True
+    if not os.path.exists(large_path):
+        sys.exit("Missing image for %s: add an original photo or images/artworks/%s.jpg" % (work["slug"], work["slug"]))
+    if force or not os.path.exists(thumb_path):
+        # The card thumbnail is always made from the large image.
+        im = Image.open(large_path)
+        icc = im.info.get("icc_profile")
+        kwargs = dict(quality=THUMB_QUALITY, method=6)
+        if icc:
+            kwargs["icc_profile"] = icc
+        resize(im.convert("RGB"), THUMB).save(thumb_path, "WEBP", **kwargs)
     with Image.open(large_path) as a, Image.open(thumb_path) as b:
         return a.size, b.size
 
@@ -91,7 +99,6 @@ def card(work, price, eager):
     slug, title = work["slug"], work["title"]
     (w, h), (tw, th) = work["size"], work["thumb"]
     landscape = w / h > 1.15
-    sizes = "(min-width: 1024px) 760px, 92vw" if landscape else "(min-width: 1024px) 380px, (min-width: 640px) 46vw, 92vw"
     label = CATEGORIES[work["category"]]
     subject = "Inquiry%3A%20" + re.sub(r"%2C", "%2C", html.escape(title)).replace(" ", "%20").replace(",", "%2C")
     loading = 'fetchpriority="high"' if eager else 'loading="lazy"'
@@ -99,7 +106,7 @@ def card(work, price, eager):
         <article class="work{' work--landscape' if landscape else ''} reveal" id="{slug}" data-category="{work['category']}" data-category-label="{label}" data-title="{e(title)}" data-image="images/artworks/{slug}.jpg" data-width="{w}" data-height="{h}" data-price="{e(price)}" style="--accent:{work['accent']}">
           <a class="work-link" href="images/artworks/{slug}.jpg">
             <div class="work-frame">
-              <img src="images/artworks/{slug}-thumb.jpg" srcset="images/artworks/{slug}-thumb.jpg {tw}w, images/artworks/{slug}.jpg {w}w" sizes="{sizes}" width="{tw}" height="{th}" alt="{e(work['alt'])}" {loading} decoding="async">
+              <img src="images/artworks/{slug}-thumb.webp" width="{tw}" height="{th}" alt="{e(work['alt'])}" {loading} decoding="async">
             </div>
             <h3 class="work-title">{e(title)}</h3>
           </a>
@@ -144,6 +151,24 @@ def main():
         % (w["slug"], w["accent"], html.escape(w["title"]), html.escape(w["title"])) for w in works)
     s = between(s, "<!-- palette:start -->", "<!-- palette:end -->", "\n" + swatches + "\n          ", "palette")
     open(p, "w").write(s)
+
+    # Hand-written images on the other pages: point them at the current thumbnails
+    for page in ("index.html", "about.html", "contact.html"):
+        p = path(page)
+        s = open(p).read()
+        for work in works:
+            slug = work["slug"]
+            (w, h), (tw, th) = work["size"], work["thumb"]
+
+            def fix(m):
+                tag = re.sub(r"%s-thumb\.(?:jpg|webp)" % re.escape(slug), slug + "-thumb.webp", m.group(0))
+                tag = re.sub(r"(%s-thumb\.webp) \d+w" % re.escape(slug), r"\g<1> %dw" % tw, tag)
+                tag = re.sub(r"(%s\.jpg) \d+w" % re.escape(slug), r"\g<1> %dw" % w, tag)
+                tag = re.sub(r'width="\d+"', 'width="%d"' % tw, tag)
+                return re.sub(r'height="\d+"', 'height="%d"' % th, tag)
+
+            s = re.sub(r"<img [^>]*%s-thumb\.(?:jpg|webp)[^>]*>" % re.escape(slug), fix, s)
+        open(p, "w").write(s)
 
     # index.html: count and featured prices
     p = path("index.html")

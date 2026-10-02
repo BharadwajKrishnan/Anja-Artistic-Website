@@ -49,7 +49,7 @@
     --space-7: 4rem;
     --space-8: 6.5rem;
 
-    --dur: 520ms;
+    --dur: 380ms;
     --dur-fast: 240ms;
     --ease: cubic-bezier(.2, .7, .2, 1);
     --radius: 4px;
@@ -240,8 +240,8 @@
     .shelf { max-width: 560px; margin-top: var(--space-5); }
   }
   @media (prefers-reduced-motion: no-preference) {
-    html.js .shelf-item { animation: land 900ms var(--ease) both; animation-delay: var(--delay, 0ms); }
-    html.js .shelf-item img { animation: settle 900ms var(--ease) both; animation-delay: var(--delay, 0ms); }
+    html.js .shelf-item { animation: land 650ms var(--ease) both; animation-delay: var(--delay, 0ms); }
+    html.js .shelf-item img { animation: settle 650ms var(--ease) both; animation-delay: var(--delay, 0ms); }
     @keyframes land {
       from { opacity: 0; transform: translateY(-32px) rotate(var(--rot, 0deg)); }
       to { opacity: 1; transform: translateY(0) rotate(var(--rot, 0deg)); }
@@ -467,7 +467,7 @@
   /* Hero: words rise in one by one, then a brushstroke draws itself under her last words */
   .w { display: inline-block; }
   @media (prefers-reduced-motion: no-preference) {
-    html.js h1 .w { opacity: 0; transform: translateY(.45em) rotate(1.5deg); animation: word-rise 700ms var(--ease) forwards; animation-delay: calc(var(--i, 0) * 55ms); }
+    html.js h1 .w { opacity: 0; transform: translateY(.45em) rotate(1.5deg); animation: word-rise 450ms var(--ease) forwards; animation-delay: calc(var(--i, 0) * 30ms); }
     @keyframes word-rise { to { opacity: 1; transform: none; } }
   }
   .stroke { position: relative; display: inline-block; isolation: isolate; white-space: nowrap; }
@@ -477,7 +477,7 @@
     vector-effect: non-scaling-stroke; opacity: .8;
   }
   @media (prefers-reduced-motion: no-preference) {
-    html.js .stroke-svg path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1s var(--ease) 900ms forwards; }
+    html.js .stroke-svg path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 700ms var(--ease) 500ms forwards; }
     @keyframes draw { to { stroke-dashoffset: 0; } }
   }
 
@@ -510,10 +510,7 @@
 
   /* Gallery cards: perspective tilt that follows the cursor; staggered reveal */
   .work-frame { perspective: 900px; }
-  .work-frame img {
-    transform: translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    transition: transform 220ms var(--ease), box-shadow 260ms var(--ease);
-  }
+  .work-frame img { transition: transform 220ms var(--ease), box-shadow 260ms var(--ease); }
   .work-link:hover .work-frame, .work-link:focus-visible .work-frame { --lift: -8px; }
   .work-link:hover img, .work-link:focus-visible img {
     transform: translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -588,7 +585,7 @@
 
 @layer utilities {
   @media (prefers-reduced-motion: no-preference) {
-    html.js .reveal { transition-delay: calc(var(--i, 0) * 70ms); }
+    html.js .reveal { transition-delay: calc(var(--i, 0) * 40ms); }
   }
 }
 
